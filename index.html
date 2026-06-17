@@ -111,7 +111,6 @@
       .project-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .5s ease; display: block; }
       .project-card:hover .project-img-wrap img { transform: scale(1.06); }
       .project-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(14,18,16,0.85) 100%); }
-      .project-img-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 48px; }
       .project-year-badge { position: absolute; top: 14px; left: 14px; padding: 4px 12px; border-radius: 999px; background: rgba(14,18,16,0.75); border: 1px solid rgba(90,138,94,0.4); color: var(--accent-sage); font-size: 11px; font-weight: 700; letter-spacing: 1px; backdrop-filter: blur(8px); }
       .project-cat-badge { position: absolute; top: 14px; right: 14px; padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 600; backdrop-filter: blur(8px); }
       .project-cat-badge.layout { background: rgba(160,120,80,0.2); border: 1px solid rgba(160,120,80,0.35); color: #c8985a; }
@@ -124,15 +123,28 @@
       .project-tags { display: flex; flex-wrap: wrap; gap: 7px; }
       .project-tag { padding: 4px 11px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); font-size: 11px; color: var(--text-muted); font-weight: 500; }
 
-      .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; margin-top: 48px; }
-      .award-card { padding: 28px; display: flex; align-items: flex-start; gap: 18px; }
-      .award-badge-icon { width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 26px; background: rgba(160,120,80,0.12); border: 1px solid rgba(160,120,80,0.25); }
-      .award-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 5px; color: var(--text-primary); }
-      .award-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 8px; }
-      .award-pill { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
-      .award-pill.gold { background: rgba(160,120,80,0.15); color: #c8985a; border: 1px solid rgba(160,120,80,0.25); }
-      .award-pill.part { background: rgba(138,171,126,0.12); color: var(--accent-sage); border: 1px solid rgba(138,171,126,0.2); }
+      /* ── AWARDS BARU dengan foto ── */
+      .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 24px; margin-top: 48px; }
+      .award-card {
+        border-radius: 20px; overflow: hidden;
+        background: var(--bg-card); border: 1px solid var(--border);
+        backdrop-filter: blur(16px);
+        transition: border-color .25s, transform .25s, box-shadow .25s;
+      }
+      .award-card:hover { border-color: rgba(160,120,80,0.35); transform: translateY(-5px); box-shadow: 0 20px 56px rgba(160,120,80,0.12); }
+      .award-img-wrap { position: relative; height: 200px; overflow: hidden; }
+      .award-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .5s ease; display: block; }
+      .award-card:hover .award-img-wrap img { transform: scale(1.05); }
+      .award-img-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 35%, rgba(14,18,16,0.9) 100%); }
+      .award-img-fallback { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 52px; }
+      .award-pill-img { position: absolute; bottom: 14px; left: 14px; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; }
+      .award-pill-img.gold { background: rgba(160,120,80,0.85); color: #fff3e0; border: 1px solid rgba(200,152,90,0.5); backdrop-filter: blur(6px); }
+      .award-pill-img.part { background: rgba(90,138,94,0.85); color: #e8f5e0; border: 1px solid rgba(138,171,126,0.5); backdrop-filter: blur(6px); }
+      .award-body { padding: 22px 24px; }
+      .award-body h4 { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+      .award-body p { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
 
+      /* CONTACT */
       .contact-links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; margin-top: 48px; }
       .contact-card { display: flex; align-items: center; gap: 18px; padding: 22px 24px; border-radius: 16px; text-decoration: none; color: var(--text-primary); background: var(--bg-card); backdrop-filter: blur(16px); border: 1px solid var(--border); transition: border-color .25s, transform .25s, box-shadow .25s; }
       .contact-card:hover { border-color: var(--border-green); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(45,90,48,0.15); }
@@ -155,7 +167,7 @@
         .parallax-content h1 { font-size: 38px; }
         .hero-stats { flex-wrap: wrap; gap: 16px; }
         .stat { border-right: none; padding: 0; flex: none; width: 45%; }
-        .projects-grid { grid-template-columns: 1fr; }
+        .projects-grid, .awards-grid { grid-template-columns: 1fr; }
         footer { flex-direction: column; text-align: center; }
       }
     </style>
@@ -212,6 +224,7 @@
 
   <div class="content-wrap">
 
+    <!-- ABOUT -->
     <section id="about">
       <div class="section-inner">
         <div class="section-tag">Profil</div>
@@ -239,6 +252,7 @@
       </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills" style="padding-top:0">
       <div class="section-inner">
         <div class="section-tag">Keahlian</div>
@@ -285,6 +299,7 @@
       </div>
     </section>
 
+    <!-- EXPERIENCE -->
     <section id="experience">
       <div class="section-inner">
         <div class="section-tag">Pengalaman</div>
@@ -341,17 +356,11 @@
         <div class="section-tag">Proyek</div>
         <h2 class="section-title">Featured Projects</h2>
         <p class="section-sub">Inisiatif strategis dan proyek nyata yang telah dirancang, dieksekusi, dan memberikan dampak terukur di industri F&B.</p>
-
         <div class="projects-grid">
 
-          <!-- PROJECT 1 — NCC Re-Layout 2026 | ID: 1WjwWy0s8uY60o_bDryd7s5PGj0hhfi9f -->
           <div class="project-card">
             <div class="project-img-wrap" id="pimg1" style="background:linear-gradient(135deg,#1a2e1c,#2d5a30)">
-              <img
-                src="https://drive.google.com/thumbnail?id=1WjwWy0s8uY60o_bDryd7s5PGj0hhfi9f&sz=w800"
-                alt="NCC Bar Re-Layout 2026"
-                onerror="tryImgFallback(this,'1WjwWy0s8uY60o_bDryd7s5PGj0hhfi9f','pimg1')"
-              />
+              <img src="https://drive.google.com/thumbnail?id=1WjwWy0s8uY60o_bDryd7s5PGj0hhfi9f&sz=w800" alt="NCC Bar Re-Layout 2026" onerror="tryImgFallback(this,'1WjwWy0s8uY60o_bDryd7s5PGj0hhfi9f','pimg1')"/>
               <div class="project-img-overlay"></div>
               <span class="project-year-badge">2026</span>
               <span class="project-cat-badge layout">Bar Layout</span>
@@ -369,14 +378,9 @@
             </div>
           </div>
 
-          <!-- PROJECT 2 — NCC Menu Launch 2025 | ID: 1-S-58BRuPHjaD9m2eFnK_JD6P01ERrHp -->
           <div class="project-card">
             <div class="project-img-wrap" id="pimg2" style="background:linear-gradient(135deg,#1e3020,#3a6040)">
-              <img
-                src="https://drive.google.com/thumbnail?id=1-S-58BRuPHjaD9m2eFnK_JD6P01ERrHp&sz=w800"
-                alt="NCC Menu Innovation 2025"
-                onerror="tryImgFallback(this,'1-S-58BRuPHjaD9m2eFnK_JD6P01ERrHp','pimg2')"
-              />
+              <img src="https://drive.google.com/thumbnail?id=1-S-58BRuPHjaD9m2eFnK_JD6P01ERrHp&sz=w800" alt="NCC Menu Innovation 2025" onerror="tryImgFallback(this,'1-S-58BRuPHjaD9m2eFnK_JD6P01ERrHp','pimg2')"/>
               <div class="project-img-overlay"></div>
               <span class="project-year-badge">2025</span>
               <span class="project-cat-badge menu">Menu Innovation</span>
@@ -395,14 +399,9 @@
             </div>
           </div>
 
-          <!-- PROJECT 3 — Artemida Coffee Setup 2024 | ID: 1Ek-YkLAc9YTy3gtR7Eoia_pSVO79PaPj -->
           <div class="project-card">
             <div class="project-img-wrap" id="pimg3" style="background:linear-gradient(135deg,#2a1e10,#5a3820)">
-              <img
-                src="https://drive.google.com/thumbnail?id=1Ek-YkLAc9YTy3gtR7Eoia_pSVO79PaPj&sz=w800"
-                alt="Artemida Coffee Full Bar Setup 2024"
-                onerror="tryImgFallback(this,'1Ek-YkLAc9YTy3gtR7Eoia_pSVO79PaPj','pimg3')"
-              />
+              <img src="https://drive.google.com/thumbnail?id=1Ek-YkLAc9YTy3gtR7Eoia_pSVO79PaPj&sz=w800" alt="Artemida Coffee Full Bar Setup 2024" onerror="tryImgFallback(this,'1Ek-YkLAc9YTy3gtR7Eoia_pSVO79PaPj','pimg3')"/>
               <div class="project-img-overlay"></div>
               <span class="project-year-badge">2024</span>
               <span class="project-cat-badge setup">Full Bar Setup</span>
@@ -425,38 +424,62 @@
       </div>
     </section>
 
+    <!-- ══════════════════════════════════════════
+         AWARDS — dengan foto cover
+    ══════════════════════════════════════════ -->
     <section id="awards">
       <div class="section-inner">
         <div class="section-tag">Penghargaan</div>
         <h2 class="section-title">Prestasi & Awards</h2>
         <p class="section-sub">Pencapaian yang memperkuat dedikasi dan kompetensi di industri kopi.</p>
         <div class="awards-grid">
-          <div class="glass-card award-card">
-            <div class="award-badge-icon">🥇</div>
-            <div>
+
+          <!-- Award 1 — Barista Camp Semarang | ID: 1e0b9ggXQ_M4yBdyb671KxcEVVy0mvHQU -->
+          <div class="award-card">
+            <div class="award-img-wrap" id="aimg1" style="background:linear-gradient(135deg,#2a1e10,#5a3820)">
+              <img
+                src="https://drive.google.com/thumbnail?id=1e0b9ggXQ_M4yBdyb671KxcEVVy0mvHQU&sz=w800"
+                alt="Barista Camp Semarang 2015"
+                onerror="tryImgFallback(this,'1e0b9ggXQ_M4yBdyb671KxcEVVy0mvHQU','aimg1')"
+              />
+              <div class="award-img-overlay"></div>
+              <span class="award-pill-img gold">🏆 1st Winner · 2015</span>
+            </div>
+            <div class="award-body">
               <h4>Barista Camp Semarang</h4>
-              <p>Kompetisi barista tingkat regional Semarang yang mempertemukan para barista terbaik Jawa Tengah.</p>
-              <span class="award-pill gold">🏆 1st Winner · 2015</span>
+              <p>Meraih posisi pertama dalam kompetisi barista tingkat regional Semarang yang mempertemukan para barista terbaik dari seluruh Jawa Tengah. Pencapaian ini menjadi bukti nyata atas kompetensi teknis dan konsistensi kualitas dalam dunia specialty coffee.</p>
             </div>
           </div>
-          <div class="glass-card award-card">
-            <div class="award-badge-icon">☕</div>
-            <div>
+
+          <!-- Award 2 — Jateng Coffee Fest | ID: 1TPV3QGlTfO8Nm5kZY7Yimki1un-jQLBw -->
+          <div class="award-card">
+            <div class="award-img-wrap" id="aimg2" style="background:linear-gradient(135deg,#1e3020,#3a6040)">
+              <img
+                src="https://drive.google.com/thumbnail?id=1TPV3QGlTfO8Nm5kZY7Yimki1un-jQLBw&sz=w800"
+                alt="Jateng Coffee Fest 2016"
+                onerror="tryImgFallback(this,'1TPV3QGlTfO8Nm5kZY7Yimki1un-jQLBw','aimg2')"
+              />
+              <div class="award-img-overlay"></div>
+              <span class="award-pill-img part">✦ Participant · 2016</span>
+            </div>
+            <div class="award-body">
               <h4>Jateng Coffee Fest</h4>
-              <p>Festival kopi bergengsi tingkat Jawa Tengah yang mempertemukan pecinta dan profesional kopi.</p>
-              <span class="award-pill part">✦ Participant · 2016</span>
+              <p>Berpartisipasi dalam festival kopi bergengsi tingkat Jawa Tengah yang mempertemukan para profesional, roaster, dan pecinta kopi terbaik di region. Keikutsertaan ini memperluas wawasan industri dan memperkuat jejaring profesional di ekosistem kopi Jawa Tengah.</p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" style="padding-top:0">
       <div class="section-inner">
         <div class="section-tag">Kontak</div>
         <h2 class="section-title">Mari Terhubung!</h2>
         <p class="section-sub">Tertarik berdiskusi tentang peluang kerja sama atau proyek F&B? Temukan saya di sini.</p>
         <div class="contact-links-grid">
+
           <a href="https://instagram.com/rifqidul" target="_blank" class="contact-card">
             <div class="contact-card-icon" style="background:linear-gradient(135deg,rgba(193,53,132,0.15),rgba(253,29,29,0.1));border-color:rgba(193,53,132,0.2);">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -473,7 +496,9 @@
             <div><div class="contact-card-name">Instagram</div><div class="contact-card-handle">@rifqidul</div></div>
             <div class="contact-card-arrow">→</div>
           </a>
-          <a href="https://linkedin.com/in/rifqidul" target="_blank" class="contact-card">
+
+          <!-- LinkedIn — URL diperbarui -->
+          <a href="https://www.linkedin.com/in/rifqi-abdul-hafid-b99262177" target="_blank" class="contact-card">
             <div class="contact-card-icon" style="background:rgba(10,102,194,0.12);border-color:rgba(10,102,194,0.25);">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <rect x="2" y="2" width="20" height="20" rx="4" stroke="#0a66c2" stroke-width="1.8"/>
@@ -481,9 +506,10 @@
                 <path d="M11 17v-3.5a2.5 2.5 0 0 1 5 0V17M11 10v7" stroke="#0a66c2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <div><div class="contact-card-name">LinkedIn</div><div class="contact-card-handle">@rifqidul</div></div>
+            <div><div class="contact-card-name">LinkedIn</div><div class="contact-card-handle">Rifqi Abdul Hafid</div></div>
             <div class="contact-card-arrow">→</div>
           </a>
+
           <a href="https://wa.me/6281578731012" target="_blank" class="contact-card">
             <div class="contact-card-icon" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.2);">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -494,6 +520,7 @@
             <div><div class="contact-card-name">WhatsApp</div><div class="contact-card-handle">0815 7873 1012</div></div>
             <div class="contact-card-arrow">→</div>
           </a>
+
         </div>
       </div>
     </section>
@@ -511,7 +538,7 @@
   </div>
 
   <script>
-    /* ── Hero image fallback ── */
+    /* ── Hero fallback ── */
     var heroSrcs = [
       'https://drive.google.com/thumbnail?id=1LVkKDpNza5NdkDLQii3Eya9LMO8MO2JC&sz=w1600',
       'https://lh3.googleusercontent.com/d/1LVkKDpNza5NdkDLQii3Eya9LMO8MO2JC',
@@ -530,7 +557,7 @@
       }
     }
 
-    /* ── Project image fallback ── */
+    /* ── Project & Award image fallback ── */
     var imgTryIdx = {};
     function tryImgFallback(img, fileId, wrapperId) {
       if (!imgTryIdx[fileId]) imgTryIdx[fileId] = 0;
